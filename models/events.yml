@@ -1,0 +1,32 @@
+
+version: 2
+
+models:
+    - name: events
+      description: "Formatted events with key attributes flattened"
+      columns:
+          - name: context_id
+            description: "Sensor Event Context Identity"
+            tests:
+                - unique
+                - not_null      
+          - name: entity_id
+            description: "Entity Identity"
+            tests:
+                - not_null
+          - name: state
+            description: "Entity State"
+            tests:
+                - not_null
+          - name: device_class
+            description: "Device Class"
+          - name: last_updated
+            description: "Timestamp entity was last updated"
+          - name: last_changed
+            description: "Timestamp entity value changed"
+            tests:
+                - not_null            
+          - name: enqueuedTime
+            description: "Timestamp sensor event was queues in Event Hub"
+            tests:
+                - not_null            
