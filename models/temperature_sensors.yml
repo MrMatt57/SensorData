@@ -1,0 +1,26 @@
+
+version: 2
+
+models:
+    - name: temperature_sensors
+      description: "Temperature sensor events"
+      columns:
+          - name: context_id
+            description: "Sensor Event Context Identity"
+            tests:
+                - unique
+                - not_null
+          - name: entity_id
+            description: "Entity Identity"
+            tests:
+                - not_null
+          - name: temperature_f
+            description: "Sensor Temperature in Fahrenheit"          
+            tests:
+                - dbt_utils.accepted_range:
+                    min_value: -126
+                    max_value: 800
+          - name: last_updated
+            description: "Timestamp entity was last updated"
+            tests:
+                - not_null
